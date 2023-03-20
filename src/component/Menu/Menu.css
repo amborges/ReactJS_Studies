@@ -1,0 +1,32 @@
+.menu {
+    margin          : auto;
+    text-align      : center;
+	padding         : 0px;
+    width           : 80%;
+    background-color: #000000;
+    color           : #ffffff;
+
+}
+
+.menu .clickable{
+    display      : inline-block;
+    padding: 16px 16px 16px 16px;
+}
+
+.menu .clickable:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* TROUBLE: when mouse hover div, but not DOM a, link is showed as white instead of black */
+.menu .clickable a{
+    text-decoration: none;
+}
+
+.menu .clickable a:hover{
+    color: #000000;
+}
+
+.menu .clickable img{
+    height: 32px;
+}

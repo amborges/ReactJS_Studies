@@ -1,0 +1,39 @@
+.footer {
+    margin          : auto;
+    text-align      : center;
+	padding         : 32px;
+    width           : 75%;
+    background-color: #00b8f4;
+    color           : #ffffff;
+}
+
+.footer .leftside{
+    position      : relative;
+	vertical-align: middle;
+	display       : inline-block;
+    text-align    : right;
+}
+
+.footer .rightside{
+    position      : relative;
+	vertical-align: middle;
+	display       : inline-block;
+    text-align    : left;
+    padding-left: 16px;
+}
+
+a:link{
+    color: #ffffff;
+}
+
+a:visited{
+    color: #ffffff;
+}
+
+a:active{
+    color: #ffffff;
+}
+
+a:hover {
+    color: hotpink;
+}
