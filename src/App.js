@@ -1,18 +1,11 @@
-//import { useState } from 'react';
+//import { useState, useEffect } from 'react';
 import './App.css';
 import Banner from './component/Banner/Banner';
 import Footer from './component/Footer/Footer';
 import Menu from './component/Menu/Menu';
 import Team from './component/Team/Team';
 
-//This class simplifies the creating of members
-function MemberData(vname, vteam_name, vlattes, vimage){
-    return {name:      vname,
-            team_name: vteam_name,
-            lattes:    vlattes,
-            image:     vimage
-    }
-}
+import {getMembers} from './update_lattes/team_members'
 
 function App() {
   
@@ -25,11 +18,10 @@ function App() {
     }
   }
 
-  
-
   //this array store the team classifications
   //CHALLANGE: change main_color and bg_color by a iterate odd_pair and even_pair
   const teamTitleList = [
+    new TeamTitle('Líder',                    '#57C278', '#D9F7E9'),
     new TeamTitle('Pesquisadores Chefes',     '#57C278', '#D9F7E9'),
     new TeamTitle('Pesquisadores Convidados', '#82CFFA', '#E8F8FF'),
     new TeamTitle('Pós-Doutorandos',          '#A6D157', '#F0F8E2'),
@@ -37,22 +29,14 @@ function App() {
     new TeamTitle('Mestrandos',               '#DB6EBF', '#FFD9F5'),
     new TeamTitle('Iniciação Científica',     '#FFBA05', '#FFF5D9'),
     new TeamTitle('Colaboradores',            '#FF8A29', '#FFEEDF'),
-    new TeamTitle('Voluntários',              '#82CFFA', '#E8F8FF')
+    new TeamTitle('Voluntários',              '#82CFFA', '#E8F8FF'),
+    new TeamTitle('Ex-Membros',               '#82CFFA', '#E8F8FF')
   ]
 
   //this variables stores the pair [reader_var, write_var], of all registred team members
   //const [team_members, set_team_members] = useState([])
-
-  //const bruno = new MemberData("Bruno Zatt", teamTitleList[0].title, "http://lattes.cnpq.br/8251926321102019")
-
-  const team_members = [MemberData("Bruno Zatt", teamTitleList[0].title, 
-  "http://lattes.cnpq.br/8251926321102019",
-  "http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4164431H8"),
-  
-  MemberData("Alex Borges", teamTitleList[2].title, 
-  "http://lattes.cnpq.br/8656832357507890",
-  "http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4999838P8")]
-
+  //set_team_members(getMembers())
+  const team_members = getMembers()
   
   return (
     <div className="App">
