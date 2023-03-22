@@ -15,7 +15,7 @@
 
 .membercard .footer {
     background    : #FFFFFF;
-    box-shadow    : 5px 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow    : 5px 5px 15px rgba(0, 0, 0, 0.3);
     border-radius : 0px 0px 10px 10px;
     padding-top   : 40px;
     padding-bottom: 20px;
@@ -41,4 +41,61 @@
     line-height: 22px;
     color      : #212121;
     padding    : 0 16px;
+}
+
+.membercard .footer .resume_popup{
+    color: #000000;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.membercard .footer .resume_popup span{
+    color: #000000;
+}
+  
+.membercard .footer .resume_popup .resume_text{
+    visibility: hidden;
+    width: 500px;
+    background-color: #00b8f4;
+    color: #fff;
+    text-align: left;
+    border-radius: 16px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+  
+.membercard .footer .resume_popup .resume_text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #00b8f4 transparent transparent transparent;
+}
+  
+  /* Toggle this class - hide and show the popup */
+.membercard .footer .resume_popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
 }

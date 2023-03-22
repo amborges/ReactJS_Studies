@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 csv = pd.read_csv("member_list_lattes.csv", names=["urllattes", "team_name", "lattescode"])
 
-new_csv = []
+members_updated = []
 
 #para cada pessoa existente no arquivo
 for index, row in csv.iterrows():
@@ -40,18 +40,26 @@ for index, row in csv.iterrows():
 	#MUDAR: tentar baixar a imagem pra não ficar requisitando toda hora a imagem
 	user_img = "http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id={}".format(row.lattescode)
 	
-	#gerando o novo csv
-	new_csv.append({'name'     : user_name,
-	                'team_name': row.team_name,
-	                'lattes'   : row.urllattes,
-	                'image'    : user_img,
-	                'resume'   : user_resume})
+	#gerando os dados atualizados de cada membro
+	members_updated.append({'name'     : user_name,
+	                        'team_name': row.team_name,
+	                        'lattes'   : row.urllattes,
+	                        'image'    : user_img,
+	                        'resume'   : user_resume})
 
 init_text="export function getMembers(){\n\tconst team_members = ["
 end_text="]\n\treturn team_members;\n}"
 
 with open("team_members.js", "w") as f:
 	f.write(init_text)
-	for element in new_csv:
-		f.write(str(element) + ",")
+	for i in range(len(members_updated)):
+		mid_text = "name:'{}', team_name:{}, lattes:'{}', image:'{}', resume:'{}'".format(members_updated[i]['name'],
+		                                                                                  members_updated[i]['team_name'],
+		                                                                                  members_updated[i]['lattes'],
+		                                                                                  members_updated[i]['image'],
+		                                                                                  members_updated[i]['resume'])
+		if i < len(members_updated) - 1:
+			f.write("{" + mid_text + "}, ")
+		else:
+			f.write("{" + mid_text + "}")
 	f.write(end_text)
